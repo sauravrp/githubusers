@@ -9,6 +9,8 @@ For UI, my focus was on the phone
 # Architecture
 The architecture utilizes Model-View-Intent pattern. Dagger is used for dependency injection 
 to separate out the components into the application component and feature component. 
+This enables scaling of the feature components, allows testing as well as resuability of 
+lower level components.
 The project takes advantage of LiveData for binding presentation layer with the view model 
 and RxJava for fetching data from the network.
 
@@ -23,6 +25,8 @@ I've added stack over flow links to a few places in the test code where a few li
 
 # Areas for Improvement
 - Code could use more comments.
+- On initial load, data is fetched from the network, inserted into the database and then only
+returned to the caller. This can be optimized to return first and insert into the datbase after.
 - More unit tests, instrumented tests, db test, UI tests and integration tests could be implemented.
 - Using an old version of Roboelectric due to issues with Mockk.
 - Support infinite scrolling with caching by using Remote Mediator and Paging from Paging 3 library.

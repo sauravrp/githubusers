@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import androidx.lifecycle.Observer
 import com.takehome.sauravrp.DirectoryComponentProvider
 import com.takehome.sauravrp.R
 import com.takehome.sauravrp.databinding.UserDirectoryViewBinding
@@ -20,7 +19,7 @@ class UserDirectoryActivity : AppCompatActivity(),
         UserDirectoryAdapter.UserSelectionListener {
 
     @Inject
-    lateinit var employeeDirectoryViewModelFactory: UserDirectoryViewModelFactory
+    lateinit var userDirectoryViewModelFactory: UserDirectoryViewModelFactory
 
     private lateinit var binding: UserDirectoryViewBinding
 
@@ -46,9 +45,9 @@ class UserDirectoryActivity : AppCompatActivity(),
             model.fetchUsers()
         }
 
-        val viewModel: UserDirectoryViewModel by viewModels { employeeDirectoryViewModelFactory }
+        val viewModel: UserDirectoryViewModel by viewModels { userDirectoryViewModelFactory }
 
-        viewModel.viewState.observe(this, Observer {
+        viewModel.viewState.observe(this, {
             when (it) {
                 is UserDirectoryViewModel.ViewState.Error -> showError(it.error)
                 UserDirectoryViewModel.ViewState.Loading -> showLoading()

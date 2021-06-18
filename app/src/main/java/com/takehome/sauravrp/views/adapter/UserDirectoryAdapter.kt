@@ -13,7 +13,7 @@ import com.takehome.sauravrp.helpers.UserItemResultDiffCallback
 import com.takehome.sauravrp.viewmodels.User
 import com.takehome.sauravrp.views.adapter.UserDirectoryAdapter.UserViewHolder
 
-class UserDirectoryAdapter(private val employeeSelectionListener: UserSelectionListener) :
+class UserDirectoryAdapter(private val userSelectionListener: UserSelectionListener) :
     ListAdapter<User, UserViewHolder>(UserItemResultDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
@@ -62,7 +62,7 @@ class UserDirectoryAdapter(private val employeeSelectionListener: UserSelectionL
         }
 
         override fun onClick(v: View?) {
-            employeeSelectionListener.cardItemSelected(currentList[adapterPosition])
+            userSelectionListener.cardItemSelected(currentList[adapterPosition])
         }
     }
 

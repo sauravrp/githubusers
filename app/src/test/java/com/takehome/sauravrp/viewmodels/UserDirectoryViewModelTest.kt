@@ -49,7 +49,7 @@ class UserDirectoryViewModelTest {
     }
 
     @Test
-    fun `when fetch employees called, then loading return true`() {
+    fun `when fetch users called, then loading return true`() {
         val mockedObserver = createUsersObsserver()
 
         // https://stackoverflow.com/questions/48980897/unit-testing-rxjava-doonsubscribe-and-dofinally
@@ -70,7 +70,7 @@ class UserDirectoryViewModelTest {
 
 
     @Test
-    fun `when fetch employees called is successful, then view statue return success state`() {
+    fun `when fetch users called is successful, then view statue return success state`() {
         val mockedObserver = createUsersObsserver()
 
         val data = emptyList<User>()
@@ -90,7 +90,7 @@ class UserDirectoryViewModelTest {
     }
 
     @Test
-    fun `when fetch employees called failed, then view statue return error state`() {
+    fun `when fetch users called failed, then view statue return error state`() {
         val mockedObserver = createUsersObsserver()
 
         val error = Throwable("Some Error")

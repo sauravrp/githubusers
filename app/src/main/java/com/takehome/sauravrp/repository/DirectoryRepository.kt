@@ -26,11 +26,11 @@ class DirectoryRepository @Inject constructor(
                         .map { userList ->
                             userList.map { it.toUser() }
                         }
-                        .flatMap { networkData ->
+                        .flatMap { convertedData ->
                             database
                                     .userDao()
-                                    .insertAllUsers(*networkData.toTypedArray())
-                                    .andThen(Single.just(networkData))
+                                    .insertAllUsers(*convertedData.toTypedArray())
+                                    .andThen(Single.just(convertedData))
                         }
             } else {
                 Single.just(cachedData)
@@ -44,7 +44,7 @@ fun UserDto.toUser(): User {
     return User(
             id = id,
             userName = userName,
-            photoUrl = photoUrl.orEmpty(),
+            photoUrl = photoUrl,
             type = type
     )
 }

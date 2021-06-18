@@ -14,7 +14,7 @@ class DatabaseModule {
     fun providesAppDb(applicationContext: Context): AppDatabase {
         return Room.databaseBuilder(
             applicationContext,
-            AppDatabase::class.java, "employee-db"
+            AppDatabase::class.java, "user-db"
         ).build()
     }
 }
